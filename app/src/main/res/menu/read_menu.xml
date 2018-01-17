@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_share_white_48dp"
+        android:title="공유"
+        yourapp:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/modify_menu"
+        android:title="수정"
+        android:icon="@drawable/ic_edit_white_48dp"
+        yourapp:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/delete_menu"
+        android:title="삭제"
+        android:icon="@drawable/ic_delete_white_48dp"
+        yourapp:showAsAction="ifRoom"/>
+</menu>

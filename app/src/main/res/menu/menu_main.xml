@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/setting_menu"
+        android:title="설정" />
+    <item
+        android:id="@+id/info_menu"
+        android:title="정보" />
+    <item
+        android:id="@+id/action_export"
+        android:title="내보내기" />
+    <item
+        android:id="@+id/action_import"
+        android:title="가져오기" />
+</menu>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="보안">
+        <SwitchPreference
+            android:key="lock"
+            android:title="잠금 사용"
+            android:summary="메인화면 잠금 설정"
+            android:defaultValue="false"/>
+        <EditTextPreference
+            android:inputType="numberPassword"
+            android:key="password"
+            android:dependency="lock"
+            android:maxLength="4"
+            android:summary="잠금 비밀번호 설정"
+            android:title="비밀번호" />
+        <CheckBoxPreference
+            android:key="fingerprint_use"
+            android:title="지문인식"
+            android:summary="지문인식 사용여부"
+            android:dependency="lock"
+            android:defaultValue="false"
+            android:visibility="gone"
+            android:id="@+id/fingerprint_uses"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="백업">
+        <Preference
+            android:key="backup_set"
+            android:title="구글 드라이브 백업"
+            android:summary="백업설정"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="피드백">
+        <Preference
+            android:key="email"
+            android:title="개발자 이메일"
+            android:summary="버그 신고하기"/>
+    </PreferenceCategory>
+</PreferenceScreen>

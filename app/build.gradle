@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.dnk.project.starwars"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:support-vector-drawable:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.github.ajalt.reprint:core:3.2.1@aar' // required: supports marshmallow devices
+    compile 'com.github.ajalt.reprint:reprint_spass:3.2.1@aar'
+    // optional: support for pre-marshmallow Samsung devices
+    compile 'com.github.ajalt.reprint:rxjava:3.2.1@aar' // optional: the RxJava 1 interface
+    compile 'com.github.ajalt.reprint:rxjava2:3.2.1@aar' // optional: the RxJava 2 interface
+    implementation 'com.android.support:design:26.1.0'
+    //compile 'com.melnykov:floatingactionbutton:1.3.0'
+    // https://mvnrepository.com/artifact/commons-codec/commons-codec
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    //compile 'com.google.android.gms:play-services:11.8.0'
+    compile 'cat.xojan:numpad:1.1.0'
+}
+repositories {
+    maven { url "https://jitpack.io" }
+    maven { url "http://svn.apache.org/viewvc/commons/proper/codec/trunk" }
+    maven {
+        url 'https://dl.bintray.com/xojan/maven/'
+    }
+}
