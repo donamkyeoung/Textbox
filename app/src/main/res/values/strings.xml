@@ -75,4 +75,6 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
+    <string name="new_text_memo">새 텍스트 메모</string>
+    <string name="new_image_memo">새 이미지 메모</string>
 </resources>

@@ -1,0 +1,27 @@
+ <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+        <shortcut
+            android:shortcutId="text_memo_short"
+            android:enabled="true"
+            android:icon="@drawable/ic_note_black_24dp"
+            android:shortcutShortLabel="@string/new_text_memo"
+            android:shortcutLongLabel="@string/new_text_memo">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="com.dnk.project.starwars"
+                android:targetClass="com.dnk.project.starwars.MemoWriteActivity" />
+            <categories android:name="android.shortcut.conversation" />
+        </shortcut>
+        <shortcut
+            android:shortcutId="imagge_memo_short"
+            android:enabled="true"
+            android:icon="@drawable/ic_image_black_24dp"
+            android:shortcutShortLabel="@string/new_image_memo"
+            android:shortcutLongLabel="@string/new_image_memo">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="com.dnk.project.starwars"
+                android:targetClass="com.dnk.project.starwars.ImageChooseActivity" />
+            <categories android:name="android.shortcut.conversation" />
+        </shortcut>
+        <!-- Specify more shortcuts here. -->
+ </shortcuts>

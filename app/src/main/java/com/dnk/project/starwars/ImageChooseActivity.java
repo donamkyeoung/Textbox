@@ -1,10 +1,12 @@
 package com.dnk.project.starwars;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,7 @@ public class ImageChooseActivity extends AppCompatActivity {
     TextView chosenImage;
     ImageView imageView;
     EditText imageTitle;
+    TextView textView;
     File file;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,32 +35,37 @@ public class ImageChooseActivity extends AppCompatActivity {
         chosenImage = (TextView) findViewById(R.id.chosen_image);
         imageView = (ImageView) findViewById(R.id.preview_image);
         imageTitle = (EditText) findViewById(R.id.image_title);
+        textView = new TextView(this);
+        textView.setVisibility(View.GONE);
     }
 
     public void choose(View view) {
-        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==1){
-            if(data!=null) {
-                Uri uri = data.getData();
-                filepath = getRealPathFromURI(uri);
-                if (!TextUtils.isEmpty(filepath)) {
-                    Log.d("ImageChooseActivity", filepath);
-                    file = new File(filepath);
-                    chosenImage.setText(file.getName());
-                    Log.e("ImageChooseActivity", "id = " + uri.getPath());
-                    imageView.setImageURI(uri);
-                }
+       FileDialog fileDialog = new FileDialog(ImageChooseActivity.this);
+        fileDialog.setShowDirectoryOnly(false);
+        fileDialog.setListFileFirst(true);
+        fileDialog.setFileEndsWith(new String[] {".jpg", ".JPG", ".JPEG", ".jpeg", ".png", ".PNG", ".GIF", ".gif"});
+        fileDialog.initDirectory(Environment.getExternalStorageDirectory().toString());
+        fileDialog.addFileListener(new FileDialog.FileSelectedListener() {
+            @Override
+            public void fileSelected(File file, String[] dirs, String[] files) {
+                Log.d("ImageChooseActivity", file.getPath());
+                chosenImage.setText(file.getName());
+                Log.e("ImageChooseActivity", "id = " + file.getPath());
+                Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
+                imageView.setImageBitmap(bitmap);
+                filepath=file.getPath();
+                textView.setText(filepath);
             }
+        });
+        fileDialog.createFileDialog();
+        if(filepath!=null){
+            file = new File(filepath);
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void save(View view) {
+        String filepath = textView.getText().toString();
+        File file = new File(filepath);
         title = imageTitle.getText().toString();
         if((TextUtils.isEmpty(title))||(TextUtils.isEmpty(filepath))){
             Toast.makeText(ImageChooseActivity.this, "모든 입력값을 입력해주세요.", Toast.LENGTH_SHORT).show();

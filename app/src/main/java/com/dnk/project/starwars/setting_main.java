@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.support.annotation.Nullable;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.github.ajalt.reprint.core.Reprint;
@@ -21,6 +24,12 @@ public class setting_main extends PreferenceActivity{
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
 
+        final EditText editText = new EditText(this);
+        editText.setInputType(InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        InputFilter[] FilterArray = new InputFilter[1];
+
+        FilterArray[0] = new InputFilter.LengthFilter(4);
+        editText.setFilters(FilterArray);
         SharedPreferences preference = getSharedPreferences("setting", MODE_PRIVATE);
 
         Preference backup_set =  findPreference("backup_set");
@@ -49,6 +58,5 @@ public class setting_main extends PreferenceActivity{
                 return false;
             }
         });
-
     }
 }

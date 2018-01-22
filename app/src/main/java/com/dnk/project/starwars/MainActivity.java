@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -216,10 +215,28 @@ public class MainActivity extends AppCompatActivity {
                 builder1.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        showFileChooser();
+                        FileDialog fileDialog = new FileDialog(MainActivity.this);
+                        fileDialog.setShowDirectoryOnly(false);
+                        fileDialog.setListFileFirst(true);
+                        fileDialog.setFileEndsWith(new String[] {".zip", ".ZIP"});
+                        fileDialog.initDirectory(Environment.getExternalStorageDirectory().toString());
+                        fileDialog.addFileListener(new FileDialog.FileSelectedListener() {
+                            @Override
+                            public void fileSelected(File file, String[] dirs, String[] files) {
+                                try {
+                                    Compress_file.unzip(file.getPath(), default_directory, false);
+                                    Toast.makeText(MainActivity.this, "복원되었습니다.", Toast.LENGTH_SHORT).show();
+                                    listView.setAdapter(filelistadapter);
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        fileDialog.createFileDialog();
+                        //showFileChooser();
                     }
                 });
-                builder1.setPositiveButton("아니요", new DialogInterface.OnClickListener() {
+                builder1.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -230,37 +247,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-    private void showFileChooser() {
-        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        i.setType("application/zip");
-        startActivityForResult(Intent.createChooser(i, "파일선택..."), 0);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==0){
-            if(data!=null) {
-                Uri url = data.getData();
-                Toast.makeText(this, url.getPath(), Toast.LENGTH_SHORT).show();
-                Log.d("MainActivity", url.getPath());
-                String filepath = url.getPath();
-                if (filepath.contains(":")) {
-                    String tmp[] = filepath.split(":");
-                    filepath = tmp[1];
-                }
-                if (filepath.startsWith("//")) {
-                    filepath.substring(0, 1);
-                }
-                try {
-                    Compress_file.unzip(filepath, default_directory, false);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         for (int i = 0; i < permissions.length; i++) {
