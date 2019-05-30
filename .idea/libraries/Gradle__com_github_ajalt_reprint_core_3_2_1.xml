@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ajalt.reprint:core-3.2.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/core-3.2.1.aar/2d93451dbafec4416096e822c2af77e9/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/core-3.2.1.aar/2d93451dbafec4416096e822c2af77e9/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ajalt.reprint/core/3.2.1/1df05ce1c18cde23cdd2cfec4eec1299384cc164/core-3.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

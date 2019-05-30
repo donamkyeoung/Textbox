@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: cat.xojan:numpad:1.1.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/999b760c1781f3fbaa41919218d255a3/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/999b760c1781f3fbaa41919218d255a3/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cat.xojan/numpad/1.1.0/41a6f9638cdab6c59654bb5e40d01b5ee801c957/numpad-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

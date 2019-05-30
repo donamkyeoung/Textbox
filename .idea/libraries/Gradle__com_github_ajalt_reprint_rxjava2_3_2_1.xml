@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ajalt.reprint:rxjava2-3.2.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/rxjava2-3.2.1.aar/025235779e824f2126ee95a1f019ecda/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/rxjava2-3.2.1.aar/025235779e824f2126ee95a1f019ecda/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ajalt.reprint/rxjava2/3.2.1/69038b6fd3218385c8ca1bdd00766da2270d4064/rxjava2-3.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
